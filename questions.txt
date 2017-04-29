@@ -1,0 +1,2 @@
+can managers re-activate items, schools, users, etc.
+should we actually implement cancelled orders?
