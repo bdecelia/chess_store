@@ -1,5 +1,5 @@
 <div class="contain-to-grid">
-  <nav class="top-bar" data-topbar role="navigation"> 
+  <nav class="top-bar" data-topbar role="navigation">
     <section class="top-bar-section">
       <ul class="left">
         <!-- link to home -->
@@ -25,7 +25,19 @@
           <%= link_to "Prices", item_prices_path %>
         </li>
       </ul>
-
+      <% if logged_in? %>
+          <ul class="right">
+            <li class="has-dropdown">
+            <%= link_to "Welcome, #{current_user.first_name}", user_path(current_user) %>
+            <ul class="dropdown">
+              <li><%= link_to "Edit settings", edit_user_path(current_user) %></li>
+              <li><%= link_to "Logout", logout_path %></li>
+            </ul>
+      <% else %>
+          <ul class="right">
+            <li><%= link_to "Login", login_path %></li>
+          </ul>
+      <% end %>
     </section>
   </nav>
 </div>
