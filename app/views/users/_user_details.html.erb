@@ -1,0 +1,15 @@
+<h3>
+  <b>Name</b>: <%= @user.proper_name %>
+</h3><br>
+
+<p>
+  <b>Email</b>: <%= mail_to @user.email, @user.email, encode: "javascript" %>
+</p>
+
+<p>
+  <b>Role</b>: <%= @user.role.capitalize %>
+</p>
+
+<p>
+  <b>Active</b>: <%= @user.active ? "Yes" : "No" %>
+</p>
