@@ -1,4 +1,21 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "item", 
-                                                         primary: "active_items", 
-                                                         secondary: nil,
-                                                         sidebar: "inactive_items"} %>
+<div class="row">
+  <div class="small-8 columns">
+    <% if @schools.empty? %>
+      <h3>No schools at this time</h3>
+    <% else %>
+      <h3>List of Schools</h3>
+      <%= render :partial => "schools_list" %>
+    <% end %>
+  </div>
+  <!-- <div class="small-1 columns">&nbsp;</div> -->
+  <div class="small-4 columns">
+    &nbsp;
+  </div>
+</div>
+
+<!-- Add a button for new users -->
+<%= link_to(new_school_path, class: "button radius") do %>
+  <i class="fa fa-plus"></i>
+  &nbsp;Add a New School
+<% end %>
+

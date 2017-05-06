@@ -1,7 +1,4 @@
 class ErrorsController < ApplicationController
-  # use minimal layout for cylon template...
-  layout "bare", only: ["cylon"]
-
   def cylon
   end
 

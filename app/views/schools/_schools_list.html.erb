@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @schools.each do |school| %>
+      <tr>
+        <td><%= link_to school.name, school_path(school) %></td>
+        <td>
+          <%= link_to(edit_school_path(school), class: 'button tiny radius') do %>
+            <i class="fa fa-pencil"></i>
+            &nbsp;Edit
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @schools, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<br />

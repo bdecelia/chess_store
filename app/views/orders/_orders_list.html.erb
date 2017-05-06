@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.user.username, order_path(order) %></td>
+        <td>
+          <%= link_to(edit_order_path(order), class: 'button tiny radius') do %>
+            <i class="fa fa-pencil"></i>
+            &nbsp;Edit
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<br />
