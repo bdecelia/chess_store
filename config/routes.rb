@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get 'cart' => 'cart#cart', as: :cart
   get 'add_to_cart' => 'cart#add', as: :add_to_cart
   get 'remove_from_cart' => 'cart#remove', as: :remove_from_cart
+  get 'checkout' => 'cart#checkout', as: :checkout
+  get 'finalize_purchase' => 'cart#finalize', as: :finalize_purchase
 
   # Route Error Handling
   get '*path', to: 'errors#not_found'

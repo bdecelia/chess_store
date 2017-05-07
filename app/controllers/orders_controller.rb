@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-      @orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
+    @orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
   end
 
   def show
