@@ -5,9 +5,9 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th width="225">Item</th>
-        <th width="150">Quantity</th>
-        <th width="150">Date</th>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
@@ -20,5 +20,6 @@
       <% end %>
     </tbody>
   </table>
+<%= will_paginate @purchases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 <% end %>
 <p>&nbsp;</p>

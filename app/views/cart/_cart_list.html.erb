@@ -10,7 +10,6 @@
   <tbody>
     <% @order_items.each do |oi| %>
       <tr>
-
         <td><%=  link_to oi.item.name, oi.item %></td>
         <td><%= oi.quantity %></td>
         <td><%= oi.item.current_price %></td>

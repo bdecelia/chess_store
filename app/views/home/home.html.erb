@@ -1,3 +1,17 @@
+<% if logged_in? %>
+	<% if current_user.role?(:admin) %>
+	    <%= render partial: 'admin_home' %>
+	<% elsif current_user.role?(:manager) %>
+	    <%= render partial: 'manager_home' %>
+	<% elsif current_user.role?(:shipper) %>
+	    <%= render partial: 'shipper_home' %>
+    <% elsif current_user.role?(:customer) %>
+	    <%= render partial: 'customer_home' %>
+	<% else %>
+        <%= render partial:'general_home' %>
+    <% end %>
+<% else %>
+	<%= render partial: 'general_home' %>
+<% end %>
 
-<%# render :partial => 'general_home' %>
-<%= render :partial => 'reorder_list' %>
+<%#= render partial: 'reorder_list' %>

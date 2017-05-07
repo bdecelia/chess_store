@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def index
-    @purchases = Purchase.chronological.to_a
+    @purchases = Purchase.chronological.paginate(:page => params[:page]).per_page(15)
   end
 
   def new
@@ -10,7 +10,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchase_params)
     @purchase.date = Date.current
-    
+
     if @purchase.save
       redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
     else
@@ -22,5 +22,5 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase).permit(:item_id, :quantity)
   end
-  
+
 end
