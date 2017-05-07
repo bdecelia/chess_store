@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @ordr.destroy
+    @order.destroy
     redirect_to order_path, notice: "Successfully removed #{@order.name} from the system."
   end
 
