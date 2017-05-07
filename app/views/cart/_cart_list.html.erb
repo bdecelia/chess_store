@@ -1,0 +1,23 @@
+<% unless @order_items.nil? || @order_items.empty? %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_items.each do |oi| %>
+      <tr>
+
+        <td><%=  link_to oi.item.name, oi.item %></td>
+        <td><%= oi.quantity %></td>
+        <td><%= oi.item.current_price %></td>
+        <td><%= link_to("Delete", remove_from_cart_path(item_id: oi.item.id), class: 'button radius tiny')%></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<% end %>

@@ -3,10 +3,7 @@ class CartController < ApplicationController
   before_action :set_cart
 
   def cart
-    session[:cart].to_a.each do |cart_item|
-      item_obj = Item.find_by(cart_item[0])
-      cart_item[0] = item_obj
-    end
+    @order_items = get_list_of_items_in_cart
   end
 
   def add
@@ -24,7 +21,7 @@ class CartController < ApplicationController
   end
 
   def finalize
-    order = params[:id]
+    order = params[:order_id]
     save_each_item_in_cart(order)
   end
 
@@ -38,6 +35,6 @@ class CartController < ApplicationController
   end
 
   def target_item
-    item_id = params[:id]
+    item_id = params[:item_id]
   end
 end

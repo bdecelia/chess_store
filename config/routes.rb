@@ -23,9 +23,10 @@ Rails.application.routes.draw do
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
 
-
+  # Cart Functionalities
   get 'cart' => 'cart#cart', as: :cart
   get 'add_to_cart' => 'cart#add', as: :add_to_cart
+  get 'remove_from_cart' => 'cart#remove', as: :remove_from_cart
 
   # Route Error Handling
   get '*path', to: 'errors#not_found'
