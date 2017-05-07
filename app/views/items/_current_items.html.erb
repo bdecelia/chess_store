@@ -6,6 +6,7 @@
         <th width="300">Name</th>
         <th width="100">Price</th>
         <th width="100">Inventory</th>
+        <th width="100">Buy</th>
       </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= number_to_currency item.current_price %></td>
           <td><%= item.inventory_level %></td>
+          <td><%= link_to("Buy", add_to_cart_path(@item), class: 'button radius tiny')%></td>
         </tr>
       <% end %>
     </tbody>

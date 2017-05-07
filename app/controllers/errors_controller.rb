@@ -1,11 +1,15 @@
 class ErrorsController < ApplicationController
-  def cylon
-  end
 
   def not_found
+    unless params[:a].nil?
+      logger.info "404 Error with: '#{params[:a]}'"
+    end
   end
 
   def internal_error
+    unless params[:a].nil?
+      logger.info "Error with: '#{params[:a]}'"
+    end
   end
 
   def routing

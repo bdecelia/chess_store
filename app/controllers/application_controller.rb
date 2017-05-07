@@ -1,18 +1,30 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # just show a flash message instead of full CanCan exception
+  # Error Handling
+  # --------------
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You are not authorized to take this action."
-    redirect_to home_path #TODO: link to back
+    last_page = session[:last_page].nil? ? home_path : session[:last_page]
+    redirect_to last_page #TODO: link to back
   end
 
-  # handle missing pages the BSG way...
   rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Record not found."
+    last_page = session[:last_page].nil? ? home_path : session[:last_page]
+    redirect_to last_page #TODO: link to back
+  end
+
+  rescue_from ActionController::UnknownController do |exception|
     flash[:error] = "Page not found."
-    redirect_to home_path #TODO: link to back
+    last_page = session[:last_page].nil? ? home_path : session[:last_page]
+    redirect_to last_page #TODO: link to back
+  end
+
+  rescue_from ActionController::RoutingError do |exception|
+    flash[:error] = "Page not found."
+    last_page = session[:last_page].nil? ? home_path : session[:last_page]
+    redirect_to last_page #TODO: link to back
   end
 
   private

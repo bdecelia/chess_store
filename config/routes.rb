@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # Authentication routes
   get 'user/edit' => 'users#edit', as: :edit_current_user
   get 'signup' => 'users#new', as: :signup
+
   get 'logout' => 'sessions#destroy', as: :logout
   get 'login' => 'sessions#new', as: :login
 
@@ -22,7 +23,14 @@ Rails.application.routes.draw do
   get 'contact' => 'home#contact', as: :contact
   get 'privacy' => 'home#privacy', as: :privacy
 
+
+  get 'cart' => 'cart#cart', as: :cart
+  get 'add_to_cart' => 'cart#add', as: :add_to_cart
+
+  # Route Error Handling
+  get '*path', to: 'errors#not_found'
+
   # Set the root url
-  root :to => 'home#home'
+  root to: 'home#home'
 
 end

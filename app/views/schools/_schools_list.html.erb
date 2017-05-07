@@ -3,6 +3,7 @@
     <tr>
       <th>Name</th>
       <th>Actions</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -10,10 +11,11 @@
       <tr>
         <td><%= link_to school.name, school_path(school) %></td>
         <td>
-          <%= link_to(edit_school_path(school), class: 'button tiny radius') do %>
-            <i class="fa fa-pencil"></i>
-            &nbsp;Edit
-          <% end %>
+          <%= link_to(edit_school_path(school), class: 'button tiny radius') do %> Edit <% end %>
+        </td>
+        <td>
+          <%= link_to(user_path(school), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{school.name}"}, class: 'button tiny radius alert') do %>
+          Delete <% end %>
         </td>
       </tr>
     <% end %>
