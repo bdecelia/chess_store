@@ -1,2 +1,3 @@
 can managers re-activate items, schools, users, etc.
 should we actually implement cancelled orders?
+choose credit card and school for order and then use mailer to send a purchase string to the users email

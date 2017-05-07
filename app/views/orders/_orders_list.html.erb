@@ -1,3 +1,4 @@
+<h3><%= table_name %></h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -8,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
+    <% orders_array.each do |order| %>
       <tr>
         <td><%= order.date %></td>
         <td><%= link_to order.school.name, school_path(order.school) %></td>
@@ -18,5 +19,5 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<%= will_paginate orders_array, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
 <br />

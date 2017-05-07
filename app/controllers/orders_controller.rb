@@ -2,7 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.chronological.paginate(:page => params[:page]).per_page(7)
+    @shipped_orders = Order.joins(:order_items).where("order_items.shipped_on IS NOT NULL").chronological.uniq!.paginate(:page => params[:page]).per_page(7)
+    @unshipped_orders = Order.not_shipped.paginate(:page => params[:page]).per_page(7)
   end
 
   def show
