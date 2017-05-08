@@ -1,0 +1,15 @@
+<h2>Welcome to the Chess Warehouse</h2>
+<br />
+<div class="row">
+	<div class="small-7 columns">
+		<p>
+			Here are some of the great chess equipment we have today...
+		</p>
+		<%= render partial: "items/current_items", locals: {items: @popular_items, item_type: "Popular Items"} %>
+        <%= render partial: "items/current_items", locals: {items: @previously_bought, item_type: "Items You've Previously Purchased"} %>
+	</div>
+	<div class="small-1 columns"></div>
+	<div class="small-4 columns"></div>
+</div>
+
+
