@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get 'checkout' => 'cart#checkout', as: :checkout
   get 'finalize_purchase' => 'cart#finalize', as: :finalize_purchase
 
+  get 'ship_item' => 'orders#ship', as: :ship_item
+
   # Route Error Handling
   get '*path', to: 'errors#not_found'
 

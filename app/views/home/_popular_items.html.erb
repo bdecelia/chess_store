@@ -1,0 +1,24 @@
+<h5>Popular Items List</h5>
+
+<% unless @popular_items.nil? || @popular_items.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Name</th>
+        <th width="125">Inventory</th>
+        <th width="125">Reorder Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @popular_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.name, item_path(item) %></td>
+          <td><%= item.inventory_level %></td>
+          <td><%= item.reorder_level %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no popular items at this time.</p>
+<% end %>

@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_items = @order.order_items.to_a
   end
 
   def new
@@ -36,6 +37,11 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     redirect_to order_path, notice: "Successfully removed #{@order.name} from the system."
+  end
+
+  def ship
+    OrderItem.find_by(params[:order_item_id]).update_attribute(:shipped_on, Date.current)
+    redirect_to :back
   end
 
   private
