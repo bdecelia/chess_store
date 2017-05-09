@@ -4,6 +4,8 @@ class CartController < ApplicationController
   before_action :set_cart
 
   def cart
+    @school = School.new
+    @credit_card = nil
   end
 
   def add
@@ -17,7 +19,8 @@ class CartController < ApplicationController
   end
 
   def checkout
-    @credit_card = nil
+    @school = School.new
+    @credit_card = CreditCard.new
   end
 
   def finalize

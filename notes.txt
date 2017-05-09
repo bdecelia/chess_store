@@ -3,5 +3,4 @@ should we actually implement cancelled orders?
 choose credit card and school for order and then use mailer to send a purchase string to the users email
 fix dropdown loading
 move access methods to model
-
-Homepage:
+make all float numbers two decimal places

@@ -1,5 +1,12 @@
 <% unless @order_items.nil? || @order_items.empty? %>
-<%= render :partial => "cart_list" %>
-<p>Subtotal: <%= @subtotal %> </p>
-<%= link_to("Checkout", checkout_path , class: 'button radius tiny')%>
+    <div class="row">
+        <div class="small-7 columns">
+            <div class="row"><%= render partial: "schools/school_checkout" %></div>
+            <div class="row"><%= render partial: "partials/credit_card_form" %></div>
+            <div class="row"><%= link_to("Finalize Order", finalize_purchase_path , class: 'button radius')%></div>
+        </div>
+        <%= render partial: "cart_sidebar" %>
+    </div>
+<% else %>
+    <p>You don't have anything in your cart yet! </p>
 <% end %>
