@@ -15,3 +15,168 @@
  *= require foundation_and_overrides
 
  */
+
+.tl_name {
+    width: 225px;
+    display: block;
+    position: absolute;
+}
+
+.tl_date {
+    width: 65px;
+    display: block;
+    position: absolute;
+    margin-left: 250px;
+}
+
+.tl_controls {
+    width: 68px;
+    display: block;
+    margin-left: 330px;
+}
+
+.project_item {
+    background-color: #d1ecfb;
+    width: 400px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid blue;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.supertiny {
+    font-size: 5px;
+    text-decoration: none;
+}
+
+.add_link {
+    font-size: 75%;
+    font-style: normal;
+    font-weight: normal;
+}
+
+#title_area {
+    background-color: #ffffff;
+}
+
+#main_content {
+    margin-top: 10px;
+}
+
+#footer {
+    margin-top: 15px;
+    padding-top: 0px;
+    padding-bottom: 15px;
+    background-color: #ffffff;
+    color: #6493ba;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+
+#footer a {
+    color: #7f9eb8;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    color: #7f9eb8;
+    text-decoration: underline;
+}
+
+#copy {
+    font-size: 85%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th.centered,
+table td.centered {
+    text-align: center;
+}
+
+.note {
+    font-style: italic;
+    font-size: 80%;
+}
+
+li.well {
+    list-style-type: none;
+    margin-left: -10px;
+}
+
+
+/* Cutting back the spacing on simple_form... */
+
+.form-horizontal .control-label {
+    float: left;
+    padding-top: 3px;
+    text-align: right;
+    width: 80px;
+    font-size: 90%;
+}
+
+.form-horizontal .controls {
+    margin-left: 90px;
+    /*width: 350px;*/
+}
+
+.form-horizontal .control-label .avg {
+    float: left;
+    padding-top: 3px;
+    text-align: left;
+    width: 10px;
+    font-size: 90%;
+}
+
+.form-horizontal .min_task .control-label {
+    float: left;
+    padding-top: 3px;
+    text-align: right;
+    width: 60px;
+    font-size: 90%;
+}
+
+.form-horizontal .min_task .controls {
+    margin-left: 70px;
+    width: 200px;
+}
+
+select.date {
+    width: 90px;
+}
+
+select.time {
+    width: 90px;
+}
+
+.form-actions {
+    background-color: #FFF;
+}
+
+.form-actions-min {
+    background-color: #FFF;
+    border: none;
+    padding: 10px 10px 10px 180px;
+    /*padding-left: 180px;*/
+}
+
+.pagination ul>li>a,
+.pagination ul>li>span {
+    border-left-width: 1px;
+}
+
+label {
+    padding-right: 4px;
+}
+
+#application_container {
+    max-width: 100%;
+}
+
+.orbit-container img {
+    width: 100%;
+}

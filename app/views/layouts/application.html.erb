@@ -22,14 +22,14 @@
 
     <%= render :partial => "partials/nav" %>
 
-    <div class="row">
-      <div class="small-12 columns" id="main_content">
+    <div class="row" id="application_container">
+      <div class="large-12 columns" id="main_content">
         <%= render :partial => "partials/flash" %>
         <%= yield %>
       </div>
     </div>
     <footer>
-      <div class="small-12 columns" id="footer">
+      <div class="large-12 columns" id="footer">
         <%= render partial: 'partials/footer' %>
       </div>
     </footer>
