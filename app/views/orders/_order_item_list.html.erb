@@ -1,24 +1,32 @@
+<div id="complete_1"><div>
 <table class="table table-striped">
   <thead>
     <tr>
-      <% if current_user.role?(:shipper) %> <th>Shipped</th> <% end %>
+      <% unless current_user.role?(:shipper) %> <th>Shipped</th> <% end %>
       <th>Item</th>
       <th>Quantity</th>
-      <th>Price</th>
-      <th>Delete</th>
+      <% unless current_user.role?(:shipper) %><th>Price</th>  <% end %>
+      <% if current_user.role?(:shipper) %> <th> Mark as Shipped</th> <% end %>
     </tr>
   </thead>
   <tbody>
     <% @order_items.each do |oi| %>
-      <tr>
-        <% if current_user.role?(:shipper) %>
-          <td><%= link_to("Ship", ship_item_path(order_item_id: oi.id), class: 'button radius tiny')%></td>
+      <tr id=<%= "oi#{oi.id}"%>>
+        <% unless current_user.role?(:shipper) %>
+          <td><%= oi.shipped_on.nil? ? "No" : "Yes" %></td>
         <% end %>
         <td><%=  link_to oi.item.name, oi.item %></td>
         <td><%= oi.quantity %></td>
-        <td><%= oi.item.current_price %></td>
-        <td><%= link_to("Delete", remove_from_cart_path(item_id: oi.item.id), class: 'button radius tiny')%></td>
+        <% unless current_user.role?(:shipper) %> <td><%= oi.item.price_on_date(oi.order.date) %></td> <% end %>
+        <% if oi.shipped_on.nil? %>
+        <td><%= link_to("Ship", ship_item_path(order_item_id: oi.id), class: 'button radius', remote: true)%></td>
+        <%else%>
+        <td><%= link_to("Ship", nil, class: 'button radius alert')%></td>
+        <%end%>
       </tr>
   <% end %>
   </tbody>
 </table>
+
+
+

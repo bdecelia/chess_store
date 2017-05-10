@@ -1,0 +1,2 @@
+$('#new_purchase_form').remove();
+$('#inventory').replaceWith('<p id="inventory"><b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %> </p>');

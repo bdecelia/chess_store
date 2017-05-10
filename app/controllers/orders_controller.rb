@@ -42,8 +42,12 @@ class OrdersController < ApplicationController
   end
 
   def ship
-    OrderItem.find_by(params[:order_item_id]).update_attribute(:shipped_on, Date.current)
-    redirect_to :back
+    @order_item = OrderItem.find(params[:order_item_id])
+    @order_item.update_attribute(:shipped_on, Date.current)
+    @order_item.save
+    respond_to do |format|
+      format.js {}
+     end
   end
 
   private

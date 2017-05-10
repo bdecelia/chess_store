@@ -15,7 +15,7 @@
       <% end %>
       -->
 
-      <% if can? :read, Order %>
+      <% if can? :read, Order  && (!logged_in? || !current_user.role?(:shipper))%>
       <li><%= link_to "Orders", orders_path %></li>
       <% end %>
 

@@ -1,3 +1,4 @@
+<div id="item_details">
 <div class="row">
   <div class="small-7 columns">
     <h3><%= @item.name %></h3>
@@ -15,7 +16,7 @@
   <b>Price</b>: <%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
 </p>
 
-<p>
+<p id="inventory">
   <b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %>
 </p>
 
@@ -38,3 +39,4 @@
 <p>
   <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
 </p>
+</div>

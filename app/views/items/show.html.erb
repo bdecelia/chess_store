@@ -10,5 +10,7 @@
   </div>
 </div>
 
+<%= link_to "Create a new Purchase" , new_purchase_path, remote: true, class: "button radius", id:"new_purchase_link"  %>
+
 <!-- Add buttons to list all, edit project or destroy object -->
 <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>

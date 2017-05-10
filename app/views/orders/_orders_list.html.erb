@@ -7,13 +7,11 @@
       <th>Ordered To</th>
       <% unless current_user.role?(:customer) %><th>Placed By</th> <% end %>
       <% unless current_user.role?(:shipper) %><th>Total Price</th> <% end %>
-      <% if can? :destroy, Order %> <th>Actions</th> <% end %>
     </tr>
   </thead>
   <tbody>
     <% orders_array.each do |order| %>
       <tr>
-
         <% unless current_user.role?(:shipper) %>
           <td><%= order.order_items.unshipped.nil? ? "Yes" : "No" %></td>
         <% end %>
@@ -29,12 +27,6 @@
         <% unless current_user.role?(:customer)%>
           <td><%= link_to order.user.name, order_path(order) %></td>
         <%end%>
-
-        <% if can? :destroy, order %>
-          <td> <%= link_to("Cancel", edit_order_path(order), class: 'button radius')%> </td>
-        <% else %>
-          <td> <%= link_to("Cancel", nil, class: 'button radius alert')%> </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>

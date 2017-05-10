@@ -21,7 +21,7 @@ class Ability
     if user.role? :shipper
       can [:show, :update], User, id: user.id
       can [:read, :update], OrderItem
-      can [:read, :update], Order do |order|
+      can [:read, :update, :ship], Order do |order|
         order if Order.not_shipped.all.include?(order)
       end
       can :read, Item
