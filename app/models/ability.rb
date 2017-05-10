@@ -9,7 +9,7 @@ class Ability
     end
 
     if user.role? :manager
-      #can :read, :all
+      can :read, :all
       can [:create, :read, :update], User, role: ["Manager", "Shipper"]
       can [:create, :read, :update, :destroy], Item
       can [:create, :read], ItemPrice

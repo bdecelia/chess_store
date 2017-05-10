@@ -22,5 +22,5 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<%= will_paginate @users, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", renderer: FoundationPagination::Rails %>
 <br />

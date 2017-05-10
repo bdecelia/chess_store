@@ -1,4 +1,5 @@
 class ItemPricesController < ApplicationController
+  authorize_resource
   def index
     @active_items = Item.active.alphabetical.to_a
   end
@@ -22,5 +23,5 @@ class ItemPricesController < ApplicationController
   def item_price_params
     params.require(:item_price).permit(:item_id, :price, :category)
   end
-  
+
 end

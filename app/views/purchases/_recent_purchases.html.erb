@@ -20,6 +20,6 @@
       <% end %>
     </tbody>
   </table>
-<%= will_paginate @purchases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<%= will_paginate @purchases, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", renderer: FoundationPagination::Rails %>
 <% end %>
 <p>&nbsp;</p>

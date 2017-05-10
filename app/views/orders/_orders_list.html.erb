@@ -19,5 +19,5 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate orders_array, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<%= will_paginate orders_array, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", renderer: FoundationPagination::Rails, param_name: paginate_param %>
 <br />

@@ -36,6 +36,7 @@ class CartController < ApplicationController
   end
 
   def destroy
+    clear_cart
   end
 
   private
@@ -57,7 +58,7 @@ class CartController < ApplicationController
       @credit_card = CreditCard.new(nil,nil,nil)
     else
       @card_params = [@credit_card["number"], @credit_card["expiration_year"], @credit_card["expiration_month"]]
-      @credit_card = session[:credit_card].nil? ? nil : CreditCard.new(@card_params[0], @card_params[1], @card_params[2])
+      @credit_card = CreditCard.new(@card_params[0], @card_params[1], @card_params[2])
     end
   end
 

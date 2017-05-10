@@ -20,4 +20,5 @@
       <% end %>
     </tbody>
   </table>
+  <%= will_paginate items, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", renderer: FoundationPagination::Rails, param_name: item_type %>
 <% end %>

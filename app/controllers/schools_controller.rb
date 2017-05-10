@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   def index
     @schools = School.alphabetical.paginate(:page => params[:page]).per_page(7)

@@ -12,17 +12,17 @@ class CreditCardController < ApplicationController
     end
   end
 
-  def update
-    if valid_params
-        @credit_card = CreditCard.new(card_params[:number], card_params[:expiration_year], card_params[:expiration_month])
-        if @credit_card.valid?
-            session[:credit_card] = @credit_card
-            redirect_to cart_path, notice: "Successfully updated payment method."
-        else
-            redirect_to cart_path, notice: "Invalid payment method."
-        end
-    end
-  end
+  # def update
+  #   if valid_params
+  #       @credit_card = CreditCard.new(card_params[:number], card_params[:expiration_year], card_params[:expiration_month])
+  #       if @credit_card.valid?
+  #           session[:credit_card] = @credit_card
+  #           redirect_to cart_path, notice: "Successfully updated payment method."
+  #       else
+  #           redirect_to cart_path, notice: "Invalid payment method."
+  #       end
+  #   end
+  # end
 
   def destroy
     session[:credit_card] = nil
