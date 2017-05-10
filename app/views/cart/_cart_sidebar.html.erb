@@ -14,7 +14,7 @@
       <tr>
         <td><%=  link_to oi.item.name, oi.item %></td>
         <td><%= oi.quantity %></td>
-        <td><%= oi.item.current_price %></td>
+        <td><%= number_to_currency oi.item.current_price %></td>
         <td><%= link_to("Delete", remove_from_cart_path(item_id: oi.item.id), class: 'button radius tiny')%></td>
       </tr>
   <% end %>
@@ -22,7 +22,7 @@
 </table>
 </div>
 
-<p>Subtotal: <%= @subtotal %> </p>
-<p>Shipping: <%= @shipping %> </p>
-<p>Grand Total: <%= @grand_total %> </p>
+<p>Subtotal: <%= number_to_currency @subtotal %> </p>
+<p>Shipping: <%= number_to_currency @shipping %> </p>
+<p>Grand Total: <%= number_to_currency @grand_total %> </p>
 </div>

@@ -1,11 +1,11 @@
 <% unless items.nil? || items.empty? %>
-  <h5><%= item_type %></h5>
+  <h5><%= item_type.capitalize %></h5>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
         <% if !logged_in? || !current_user.role?(:shipper) %><th>Price</th> <%end%>
-        <th>Inventory</th>
+        <% unless !logged_in? || current_user.role?(:customer) %> <th>Inventory</th> <%end%>
         <% if !logged_in? || current_user.role?(:customer) %> <th> Buy </th> <%end%>
       </tr>
     </thead>
@@ -16,7 +16,7 @@
           <% if !logged_in? || !current_user.role?(:shipper) %>
             <td><%= number_to_currency item.current_price %></td>
           <%end%>
-          <td><%= item.inventory_level %></td>
+          <% unless !logged_in? || current_user.role?(:customer) %><td><%= item.inventory_level %></td><%end%>
           <% if !logged_in? || current_user.role?(:customer) %>
           <td><%= link_to("Buy", add_to_cart_path(item_id: item.id), class: 'button radius tiny')%></td>
           <%end%>
