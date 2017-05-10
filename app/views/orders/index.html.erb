@@ -1,6 +1,13 @@
 <div class="row">
   <div class="small-8 columns">
-    <%= render partial: "orders_list", locals: {table_name: "Shipped Orders", orders_array: @shipped_orders, paginate_param: "shipped"} %>
+    <% if current_user.role?(:manager) || current_user.role?(:admin) %>
+      <%= render partial: "orders_list", locals: {table_name: "Shipped Orders", orders_array: @shipped_orders, paginate_param: "shipped"} %>
+    <% end %>
+    <% if !current_user.role?(:customer)  %>
     <%= render partial: "orders_list", locals: {table_name: "Unshipped Orders", orders_array: @unshipped_orders, paginate_param: "unshipped"} %>
+    <% end %>
+    <% if current_user.role?(:customer)  %>
+      <%= render partial: "orders_list", locals: {table_name: "Your Recent Orders", orders_array: @personal_orders, paginate_param: "personal"} %>
+    <% end %>
     <%= link_to("Add a New Order", new_order_path, class: "button radius") %>
   </div>

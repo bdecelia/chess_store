@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def index
     @shipped_orders = Order.joins(:order_items).where("order_items.shipped_on IS NOT NULL").chronological.uniq!.paginate(:page => params[:shipped]).per_page(7)
     @unshipped_orders = Order.not_shipped.paginate(:page => params[:unshipped]).per_page(7)
+    @personal_orders = logged_in? ? Order.where(user_id: current_user.id).paginate(:page => params[:personal]).per_page(7) : nil
   end
 
   def show

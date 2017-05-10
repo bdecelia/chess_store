@@ -4,6 +4,7 @@ class CartController < ApplicationController
   before_action :set_cart
 
   def cart
+    redirect_to home_path, notice: "You cannot form a cart." if logged_in? && !current_user.role?(:customer)
     @user_school = session[:school_id].nil? ? nil : School.find(session[:school_id])
     @school = School.new
     set_credit_card

@@ -1,6 +1,12 @@
 can managers re-activate items, schools, users, etc.
-should we actually implement cancelled orders?
 choose credit card and school for order and then use mailer to send a purchase string to the users email
 fix dropdown loading
 move access methods to model
 make all float numbers two decimal places
+
+everyone can read order items in their cart
+people shouldnt see price history page
+customers and guests shouldnt see inactive items
+
+school can be set from user show page
+ERROR PAGES

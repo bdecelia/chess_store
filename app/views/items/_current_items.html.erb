@@ -3,19 +3,23 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th width="300">Name</th>
-        <th width="100">Price</th>
-        <th width="100">Inventory</th>
-        <th width="100">Buy</th>
+        <th>Name</th>
+        <% if !logged_in? || !current_user.role?(:shipper) %><th>Price</th> <%end%>
+        <th>Inventory</th>
+        <% if !logged_in? || current_user.role?(:customer) %> <th> Buy </th> <%end%>
       </tr>
     </thead>
     <tbody>
       <% items.each do |item| %>
         <tr>
           <td><%= link_to item.name, item_path(item) %></td>
-          <td><%= number_to_currency item.current_price %></td>
+          <% if !logged_in? || !current_user.role?(:shipper) %>
+            <td><%= number_to_currency item.current_price %></td>
+          <%end%>
           <td><%= item.inventory_level %></td>
+          <% if !logged_in? || current_user.role?(:customer) %>
           <td><%= link_to("Buy", add_to_cart_path(item_id: item.id), class: 'button radius tiny')%></td>
+          <%end%>
         </tr>
       <% end %>
     </tbody>

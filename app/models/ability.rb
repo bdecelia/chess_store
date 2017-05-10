@@ -14,18 +14,22 @@ class Ability
       can [:create, :read, :update, :destroy], Item
       can [:create, :read], ItemPrice
       can [:create, :read], Purchase
-      can :read, [Customer, School, Order]
+      can :read, [School, Order]
+      can :read, User, role: "Customer"
     end
 
     if user.role? :shipper
-      can [:read, :update], User, id: user.id
+      can [:show, :update], User, id: user.id
       can [:read, :update], OrderItem
+      can [:read, :update], Order do |order|
+        order if Order.not_shipped.all.include?(order)
+      end
       can :read, Item
     end
 
     if user.role? :customer
-      can [:read, :update], User, id: user.id
-      can [:create, :read], School
+      can [:show, :update], User, id: user.id
+      can [:show, :create], School
       can :read, Item, active: true
       can :read, ItemPrice, item: {active: true}, category: "wholesale", end_date: nil
       can [:create, :read], Order, user_id: user.id

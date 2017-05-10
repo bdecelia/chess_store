@@ -15,6 +15,9 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:school_id] = nil
+    session[:credit_card] = nil
+    session[:cart] = nil
     redirect_to root_url, notice: "Logged out!"
   end
 end
