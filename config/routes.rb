@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   get 'remove_from_cart' => 'cart#remove', as: :remove_from_cart
   get 'checkout' => 'cart#checkout', as: :checkout
   get 'finalize_purchase' => 'cart#finalize', as: :finalize_purchase
+  post 'create_card' => 'credit_card#create', as: :create_card
+  get 'delete_card' => 'credit_card#destroy', as: :delete_card
+  get 'remove_school' => 'cart#remove_school', as: :remove_school
 
   get 'ship_item' => 'orders#ship', as: :ship_item
 

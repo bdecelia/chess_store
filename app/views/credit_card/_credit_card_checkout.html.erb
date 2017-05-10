@@ -1,0 +1,5 @@
+<% unless @credit_card.valid? %>
+	<%= render partial: "credit_card/credit_card_form" %>
+<% else %>
+	<%= render partial: "credit_card/credit_card_details" %>
+<% end %>

@@ -1,0 +1,5 @@
+<div class="row">
+	<h3> Credit Card Number: <%= "#{@credit_card.type.name} ****#{@credit_card.number[-4..-1]}" %></h3>
+  <h3> Expiration Date: <%= "#{@credit_card.expiration_month} / #{@credit_card.expiration_year}" %></h3>
+  <%= link_to 'Cancel', delete_card_path, :class => 'button alert radius' %>
+</div>

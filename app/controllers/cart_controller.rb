@@ -4,8 +4,9 @@ class CartController < ApplicationController
   before_action :set_cart
 
   def cart
+    @user_school = session[:school_id].nil? ? nil : School.find(session[:school_id])
     @school = School.new
-    @credit_card = nil
+    set_credit_card
   end
 
   def add
@@ -18,15 +19,18 @@ class CartController < ApplicationController
     redirect_to cart_path
   end
 
-  def checkout
-    @school = School.new
-    @credit_card = CreditCard.new
+  def remove_school
+    session[:school_id] = nil
+    redirect_to cart_path
   end
 
   def finalize
-    order = Order.new(user_id: current_user, school_id: params[:school_id])
-    save_each_item_in_cart(order.id) if order.save
-    redirect_to home_path
+    @order = Order.new(session[:school_id], current_user.id)
+    if @order.save
+      redirect_to order_path(@order), notice: "Successfully placed an order. Thank you!"
+    else
+      redirect_to cart_path
+    end
   end
 
   def destroy
@@ -43,5 +47,15 @@ class CartController < ApplicationController
 
   def target_item
     item_id = params[:item_id]
+  end
+
+  def set_credit_card
+    @credit_card = session[:credit_card]
+    if @credit_card.nil?
+      @credit_card = CreditCard.new(nil,nil,nil)
+    else
+      @card_params = [@credit_card["number"], @credit_card["expiration_year"], @credit_card["expiration_month"]]
+      @credit_card = session[:credit_card].nil? ? nil : CreditCard.new(@card_params[0], @card_params[1], @card_params[2])
+    end
   end
 end

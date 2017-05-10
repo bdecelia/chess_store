@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="small-7 columns">
+    <%= render :partial => "school_details" %>
+  </div>
+</div>
+
+<!-- Add buttons to list all, edit project or destroy user -->
+<%= render partial: "partials/object_options", locals: {model_name: "school", object: @school}  %>
+

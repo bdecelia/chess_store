@@ -2,7 +2,7 @@
     <div class="row">
         <div class="small-7 columns">
             <div class="row"><%= render partial: "schools/school_checkout" %></div>
-            <div class="row"><%= render partial: "partials/credit_card_form" %></div>
+            <div class="row"><%= render partial: "credit_card/credit_card_checkout" %></div>
             <div class="row"><%= link_to("Finalize Order", finalize_purchase_path , class: 'button radius')%></div>
         </div>
         <%= render partial: "cart_sidebar" %>

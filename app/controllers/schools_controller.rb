@@ -12,6 +12,11 @@ class SchoolsController < ApplicationController
   def create
     @school = School.new(school_params)
     if @school.save
+      session[:school_id] = @school.id
+      # respond_to |format| do
+      #   format.html { redirect_to schools_path, notice: "Successfully added a school to the system."}
+      #   format.js
+      # end
       redirect_to schools_path, notice: "Successfully added a school to the system."
     else
       render action: 'new'
