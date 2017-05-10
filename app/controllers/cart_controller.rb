@@ -25,8 +25,10 @@ class CartController < ApplicationController
   end
 
   def finalize
-    @order = Order.new(session[:school_id], current_user.id)
+    @order = Order.new(finalize_params)
     if @order.save
+      save_each_item_in_cart(@order)
+      clear_cart
       redirect_to order_path(@order), notice: "Successfully placed an order. Thank you!"
     else
       redirect_to cart_path
@@ -57,5 +59,9 @@ class CartController < ApplicationController
       @card_params = [@credit_card["number"], @credit_card["expiration_year"], @credit_card["expiration_month"]]
       @credit_card = session[:credit_card].nil? ? nil : CreditCard.new(@card_params[0], @card_params[1], @card_params[2])
     end
+  end
+
+  def finalize_params
+    {school_id: session[:school_id], user_id: current_user.id}
   end
 end
