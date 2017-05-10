@@ -1,10 +1,12 @@
-<% unless @inactive_items.empty? %>
-  <div class="panel clearfix">
-    <h3>Inactive Items</h3>
-    <ul>
-      <% @inactive_items.each do |item| %>
-        <li><%= link_to item.name, item_path(item) %></li>
-      <% end %>
-    </ul>
-  </div>
+<% if !logged_in? || !current_user.role?(:customer) %>
+  <% unless @inactive_items.empty? %>
+    <div class="panel clearfix">
+      <h3>Inactive Items</h3>
+      <ul>
+        <% @inactive_items.each do |item| %>
+          <li><%= link_to item.name, item_path(item) %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 <% end %>

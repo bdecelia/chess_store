@@ -64,6 +64,8 @@ class CartController < ApplicationController
   end
 
   def finalize_params
-    {school_id: session[:school_id], user_id: current_user.id}
+    user_id = current_user.id
+    grand_total = calculate_cart_items_cost + calculate_cart_shipping
+    {school_id: session[:school_id], user_id: user_id, grand_total: grand_total, date: Date.current}
   end
 end

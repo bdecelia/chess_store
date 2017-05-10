@@ -1,1 +1,5 @@
-<%= render partial: "order_item_list" %>
+<%if current_user.role?(:customer) %>
+    <%= render partial: "order_item_list" %>
+<% else %>
+    <%= render partial: "order_item_list" %>
+<% end %>

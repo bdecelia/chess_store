@@ -1,7 +1,0 @@
-<% unless @order_items.nil? || @order_items.empty? %>
-<%= render :partial => "cart_list" %>
-<p>Subtotal: <%= @subtotal %> </p>
-<p>Shipping: <%= @shipping %> </p>
-<p>Grand Total: <%= @grand_total %> </p>
-<%= link_to("Finalize", finalize_purchase_path , class: 'button radius tiny')%>
-<% end %>

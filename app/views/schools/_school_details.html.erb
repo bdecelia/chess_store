@@ -1,7 +1,6 @@
 <h3>
-  <b>School Name</b>: <%= @user_school.name %>
+  <b>School Name</b>: <%= @school.name %>
 </h3>
 <br>
-<p> <b>Address</b>: <%= "#{@user_school.street_1} #{@user_school.street_2} #{@user_school.city}, #{@user_school.state} #{@user_school.zip}" %> </p>
-<%= link_to "Remove School", remove_school_path, class:"button radius"%>
+<p> <b>Address</b>: <%= "#{@school.street_1} #{@school.street_2} #{@school.city}, #{@school.state} #{@school.zip}" %> </p>
 <br>
