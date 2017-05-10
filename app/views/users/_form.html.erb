@@ -10,8 +10,13 @@
 		<%= f.input :password %>
 		<%= f.input :password_confirmation %>
 
-		<%= f.input :active %>
-		<%= f.input :role, :collection => User::ROLES, :prompt => true %>
+		<% if logged_in? && current_user.role?(:admin) %>
+      <%= f.input :active %>
+      <%= f.input :role, :collection => User::ROLES, :prompt => true %>
+    <% elsif !logged_in?%>
+      <%= f.hidden_field :active, value: true %>
+      <%= f.hidden_field :role, value: 'customer'  %>
+    <% end %>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>

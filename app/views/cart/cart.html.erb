@@ -3,7 +3,11 @@
         <div class="small-7 columns">
             <div class="row"><%= render partial: "schools/school_checkout" %></div>
             <div class="row"><%= render partial: "credit_card/credit_card_checkout" %></div>
+            <% if logged_in? && !session[:school_id].nil? && !session[:credit_card].nil?%>
             <div class="row"><%= link_to("Finalize Order", finalize_purchase_path , class: 'button radius')%></div>
+            <% else %>
+            <h2> Please Login to Proceed to Checkout </h2>
+            <% end %>
         </div>
         <%= render partial: "cart_sidebar" %>
     </div>

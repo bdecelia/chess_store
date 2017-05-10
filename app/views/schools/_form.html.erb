@@ -9,6 +9,11 @@
 		<%= f.input :zip %>
     <%= f.input :min_grade, collection:(1..12)%>
 		<%= f.input :max_grade, collection:(1..12), input_html: {class: "school_dropdown"} %>
+		<% if logged_in? && current_user.role?(:admin) %>
+    <%= f.input :active %>
+    <% else %>
+    <%= f.hidden_field :active, active: true %>
+    <% end %>
 		<%= f.input :active %>
 		<div class="form-actions">
       <%= f.submit nil, :class => 'button radius' %>
